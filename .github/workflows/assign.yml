@@ -20,7 +20,7 @@ jobs:
           echo $next > .janitor/assign
           echo "::set-output name=next::$(printf %4s $next | tr ' ' 0)"
         shell: bash
-      -uses: actions/github-script@v3
+      - uses: actions/github-script@v3
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
