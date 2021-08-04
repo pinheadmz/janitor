@@ -39,6 +39,7 @@ jobs:
 
       - name: Save to Skynet
         uses: kwypchlo/deploy-to-skynet-action@main
+        continue-on-error: true # it will fail to comment
         with:
           upload-dir: .janitor
           registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
