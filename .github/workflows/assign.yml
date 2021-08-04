@@ -1,0 +1,25 @@
+name: Deploy Prod
+on:
+  pull_request:
+    types:
+      - labeled
+
+jobs:
+  assign:
+    name: Assign new HIP number
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'janitor:assign') }}
+
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir .janitor
+          echo "7" > .janitor/assign
+        shell: bash
+
+      - name: Deploy to Skynet
+        uses: kwypchlo/deploy-to-skynet-action@main
+        with:
+          upload-dir: .janitor
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
