@@ -15,7 +15,7 @@ jobs:
         id: janitor
         run: |
           mkdir .janitor
-          last=`curl https://0004hoej776q85oio0seben1h4elul6m6jve8q67hc3bla4t257k1a8.siasky.net/assign -s`
+          last=`curl https://0008rv23o8m5bo6p1f3r7mkscqnj4rdneijvo6go9bu8sjk23k8rhv8.siasky.net/assign -s`
           next="$((last + 1))"
           echo $next > .janitor/assign
           echo "::set-output name=next::$(printf %4s $next | tr ' ' 0)"
